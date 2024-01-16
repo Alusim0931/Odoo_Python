@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="lapeliculera_jefe" model="res.groups">
+        <field name="name">LapPeliculera / Jefe</field>
+    </record>
+    <record id="lapeliculera_becario" model="res.groups">
+        <field name="name">LaPeliculera / Becario</field>
+    </record>
+
+
+
+</odoo>
