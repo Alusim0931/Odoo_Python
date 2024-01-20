@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="escueladevela.informe_monitor"
+        string="Informe sobre los monitores"
+        model="escueladevela.monitor"
+        report_type="qweb-pdf"
+        name="escueladevela.informe_monitor_view"
+        file="escueladevela.informe_monitor_view"/>
+
+    <template id = "escueladevela.informe_monitor_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="monitor">
+                <div class="page">
+                    <h1 t-field="monitor.name"/>
+                </div>
+                <div>
+                    <strong>name</strong>
+                    <span t-field="monitor.name"/>
+                </div>
+                 <div>
+                    <strong>contact_info</strong>
+                    <span t-field="monitor.contact_info"/>
+                </div>
+                 <div>
+                    <strong>unique_id</strong>
+                    <span t-field="monitor.unique_id"/>
+                </div>
+                 <div>
+                    <strong>school</strong>
+                    <span t-field="monitor.school"/>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="escueladevela.informe_cursos"
+        string="Informe sobre los cursos"
+        model="escueladevela.cursos"
+        report_type="qweb-pdf"
+        name="escueladevela.informe_cursos_view"
+        file="escueladevela.informe_cursos_view"/>
+
+    <template id = "escueladevela.informe_cursos_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="cursos">
+                <div class="page">
+                    <h1 t-field="cursos.name"/>
+                </div>
+                <div>
+                    <strong>title</strong>
+                    <span t-field="cursos.title"/>
+                </div>
+                 <div>
+                    <strong>duration_days</strong>
+                    <span t-field="cursos.duration_days"/>
+                </div>
+                 <div>
+                    <strong>duration_hours</strong>
+                    <span t-field="cursos.duration_hours"/>
+                </div>
+                 <div>
+                    <strong>price</strong>
+                    <span t-field="cursos.price"/>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
