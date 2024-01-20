@@ -1,60 +1,101 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="fcties.list">
-      <field name="name">FCTIES list</field>
-      <field name="model">fcties.fcties</field>
+    <!-- View definition for mi_modulo.alumno_tree -->
+    <record model="ir.ui.view" id="mimodulo.alumno_tree">
+      <field name="name">mimodulo.alumno.tree</field>
+      <field name="model">mimodulo.alumno</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="apellidos"/>
+          <field name="fecha_nacimiento"/>
+          <field name="curso_academico"/>
+          <field name="correo_electronico"/>
+          <field name="telefono"/>
+          <field name="ciclo_formativo"/>
+          <field name="periodo_practica"/>
+          <field name="nota_media"/>
+          <field name="nota_media_texto"/>
         </tree>
       </field>
     </record>
--->
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="fcties.action_window">
-      <field name="name">FCTIES window</field>
-      <field name="res_model">fcties.fcties</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="fcties.action_server">
-      <field name="name">FCTIES server</field>
-      <field name="model_id" ref="model_fcties_fcties"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+    <record model="ir.ui.view" id="mimodulo.alumno_form">
+      <field name="name">mimodulo.alumno.form</field>
+      <field name="model">mimodulo.alumno</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="name"/>
+            <field name="apellidos"/>
+            <field name="fecha_nacimiento"/>
+            <field name="curso_academico"/>
+            <field name="correo_electronico"/>
+            <field name="telefono"/>
+            <field name="curso_academico"/>
+            <field name="correo_electronico"/>
+            <field name="telefono"/>
+            <field name="ciclo_formativo"/>
+            <field name="periodo_practica"/>
+            <field name="nota_media"/>
+            <field name="nota_media_texto"/>
+          </group>
+        </form>
       </field>
     </record>
--->
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="FCTIES" id="fcties.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="fcties.menu_1" parent="fcties.menu_root"/>
-    <menuitem name="Menu 2" id="fcties.menu_2" parent="fcties.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="fcties.menu_1_list" parent="fcties.menu_1"
-              action="fcties.action_window"/>
-    <menuitem name="Server to list" id="fcties" parent="fcties.menu_2"
-              action="fcties.action_server"/>
--->
+    <!-- View definition for mi_modulo.empresa_tree -->
+    <record model="ir.ui.view" id="mimodulo.empresa_tree">
+      <field name="name">mimodulo.empresa.tree</field>
+      <field name="model">mimodulo.empresa</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="persona_contacto"/>
+          <field name="telefono_contacto"/>
+          <field name="correo_electronico"/>
+          <field name="direccion"/>
+          <field name="alumnos_ids" widget="many2many_tags" options="{'no_create': True}" string="Alumnos que han hecho FCT"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="mimodulo.empresa_form">
+      <field name="name">mimodulo.empresa.form</field>
+      <field name="model">mimodulo.empresa</field>
+      <field name="arch" type="xml">
+        <form colspan="2" col="2">
+          <group>
+            <field name="name"/>
+            <field name="persona_contacto"/>
+            <field name="telefono_contacto"/>
+            <field name="correo_electronico"/>
+            <field name="direccion"/>
+            <field name="alumnos_ids" widget="many2many_tags" options="{'no_create': True}" string="Alumnos que han hecho FCT"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- Actions for window mi_modulo.alumno -->
+    <record model="ir.actions.act_window" id="mimodulo.alumno_action_window">
+      <field name="name">mimodulo.alumno.action_window</field>
+      <field name="res_model">mimodulo.alumno</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Actions for window mi_modulo.empresa -->
+    <record model="ir.actions.act_window" id="mimodulo.empresa_action_window">
+      <field name="name">mimodulo.empresa.action_window</field>
+      <field name="res_model">mimodulo.empresa</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu items -->
+    <menuitem name="MiModulo" id="mimodulo.menu_root"/>
+
+    <menuitem name="Alumno" id="mi_modulo.alumno_menu" parent="mimodulo.menu_root" action="mimodulo.alumno_action_window"/>
+    <menuitem name="Empresa" id="mi_modulo.empresa_menu" parent="mimodulo.menu_root" action="mimodulo.empresa_action_window"/>
+
   </data>
 </odoo>
